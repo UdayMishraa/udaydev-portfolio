@@ -27,7 +27,7 @@ export default function TransitionProvider({
 					}}
 					animate={{
 						opacity: 0,
-						scaleY: 0.7,
+						scaleY: 1,
 					}}
 					exit={{
 						opacity: 1,
@@ -47,7 +47,7 @@ export default function TransitionProvider({
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: -20 }}
-						transition={{ duration: 0.8, ease: "easeOut" }}
+						transition={{ duration: 1, ease: "easeOut" }}
 						className="text-3xl sm:text-5xl font-bold text-white drop-shadow-xl capitalize z-[101] text-center absolute inset-0 flex items-center justify-center pointer-events-none"
 					>
 						{pathName?.replace("/", "") || "Home"}

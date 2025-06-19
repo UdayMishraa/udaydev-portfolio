@@ -18,13 +18,12 @@ export default function RootLayout({
 		<html lang="en" className="scroll-smooth">
 			<body
 				className={`
-					${urbanist.className} 
-					bg-gradient-to-br from-tertiary/30 to-primary/25 
-					text-text antialiased 
-					min-h-screen
-					flex flex-col
-					mx-auto max-w-screen-xl px-4 sm:px-6 md:px-8
-				`}
+		${urbanist.className} 
+		bg-gradient-to-br from-secondary/30 to-primary/25 
+		text-text antialiased 
+		min-h-screen flex flex-col 
+		mx-auto max-w-screen-xl px-4 sm:px-6 md:px-8
+	`}
 			>
 				<TransitionProvider>{children}</TransitionProvider>
 			</body>

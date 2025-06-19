@@ -61,7 +61,7 @@ export default function Home() {
 				>
 					<motion.h1
 						variants={fadeUp}
-						className={`text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight ${urbanist.className}`}
+						className={`text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight ${urbanist.className} text-text`}
 					>
 						Designing <span className="text-secondary">Intuitive</span> &{" "}
 						<span className="text-secondary">Impactful</span> Interfaces
@@ -106,14 +106,14 @@ export default function Home() {
 					variants={imageMotion}
 					className="w-full max-w-sm lg:max-w-md flex justify-center"
 				>
-					<div className="relative w-full aspect-[3/4] rounded-[2rem] bg-white/10 border border-white/20 backdrop-blur-xl shadow-[0_8px_40px_rgba(255,255,255,0.05)] overflow-hidden group transition-transform duration-300">
+					<div className="relative w-full aspect-[3/4] rounded-[2rem] bg-secondary/10 border border-secondary/30 backdrop-blur-xl shadow-[0_8px_40px_rgba(216,168,116,0.08)] overflow-hidden group transition-transform duration-300">
 						<Image
 							src="/uday-pic.jpg"
 							alt="Portrait of Uday Mishra"
 							fill
 							className="object-cover object-top group-hover:saturate-200 group-hover:scale-105 transition-all duration-500"
 						/>
-						<div className="absolute inset-0 rounded-[2rem] ring-1 ring-white/10 group-hover:ring-secondary/30 transition-all duration-500 pointer-events-none" />
+						<div className="absolute inset-0 rounded-[2rem] ring-1 ring-secondary/10 group-hover:ring-accent/30 transition-all duration-500 pointer-events-none" />
 					</div>
 				</motion.div>
 			</section>

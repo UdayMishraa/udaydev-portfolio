@@ -1,17 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #7AE2CF;
-  --color-secondary: #077A7D;
-  --color-tertiary: #F5EEDD;
-  --color-text: #06202B;
-
+  --color-background: #EAE7DC;
+  /* Soft Sand */
+  --color-primary: #D8C3A5;
+  /* Warm Beige */
+  --color-secondary: #E98074;
+  /* Sunset Coral */
+  --color-accent: #8E8D8A;
+  /* Concrete Gray */
+  --color-text: #2E2E2E;
+  /* Rich Black */
+  --color-muted: #C5BFB3;
+  /* Clay Gray */
 }
 
 
 
+
+
+
+
 .nav-icons {
-  @apply hover:text-secondary text-text/100 transition-colors ease-linear duration-300;
+  @apply hover:text-secondary text-text transition-colors ease-linear duration-300;
 }
 
 button {

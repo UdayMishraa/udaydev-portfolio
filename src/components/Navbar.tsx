@@ -61,99 +61,102 @@ export default function Navbar() {
 
 	return (
 		<nav
-			className={`h-24 fixed top-0 left-0 w-full flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-text z-50 transition-all duration-300 ease-in-out ${
-				isScrolled ? "bg-white/90 shadow-xl backdrop-blur-xl" : "bg-transparent"
-			}`}
+			className={`
+			h-24 fixed top-0 left-0 w-full flex items-center justify-between
+			px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48
+			text-text z-50 transition-all duration-300 ease-in-out
+			${isScrolled ? "bg-background/90 shadow-xl backdrop-blur-xl" : "bg-transparent"}
+		`}
 		>
-			{/* Logo for Desktop View */}
 			{/* Navigation Links */}
 			<div className="hidden md:flex justify-center gap-4 w-1/3">
 				{links.map((link) => (
 					<NavLink link={link} key={link.name} />
 				))}
 			</div>
+
 			{/* Logo */}
 			<div className="md:hidden lg:flex w-1/3 justify-center">
 				<Link
 					href="/"
 					aria-label="Go to homepage"
-					className={`${greatVibes.className} transition-all duration-100 ease-in-out delay-150 text-shadow-sm text-2xl hover:text-shadow-white hover:text-secondary`}
+					className={`${greatVibes.className} text-2xl transition-all duration-150 ease-in-out text-shadow-sm hover:text-secondary`}
 				>
-					<span className=" font-medium">Uday</span>
-					<span className=" px-2 py-0.5 rounded-md font-medium">Mishra</span>
+					<span className="font-medium">Uday</span>
+					<span className="px-2 py-0.5 rounded-md font-medium">Mishra</span>
 				</Link>
 			</div>
-			{/* Social Media Icons */}
 
-			<div className="hidden md:flex justify-center gap-4 text-2xl w-1/3">
-				<Link href={"#"}>
-					<FaGithub className="nav-icons " />
+			{/* Social Icons */}
+			<div className="hidden md:flex justify-center gap-4 text-2xl w-1/3 text-accent">
+				<Link href="#">
+					<FaGithub className="hover:text-secondary transition" />
 				</Link>
-				<Link href={"#"}>
-					<FaInstagram className="nav-icons" />
+				<Link href="#">
+					<FaInstagram className="hover:text-secondary transition" />
 				</Link>
-				<Link href={"#"}>
-					<FaFacebook className="nav-icons" />
+				<Link href="#">
+					<FaFacebook className="hover:text-secondary transition" />
 				</Link>
-				<Link href={"#"}>
-					<FaLinkedin className="nav-icons" />
+				<Link href="#">
+					<FaLinkedin className="hover:text-secondary transition" />
 				</Link>
 			</div>
-			{/* Hamburger Menu for Mobile View */}
-			{
-				<div className="md:hidden">
-					<AnimatePresence mode="wait">
-						{!isOpen ? (
-							<motion.div
-								key="hamburger"
-								initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
-								animate={{ opacity: 1, rotate: 0, scale: 1 }}
-								exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
-								transition={{ duration: 0.3 }}
-							>
-								<RxHamburgerMenu
-									className="text-2xl text-text cursor-pointer z-50 relative hover:text-secondary transition-all duration-200 ease-in-out"
-									onClick={() => setIsOpen((prev) => !prev)}
-								/>
-							</motion.div>
-						) : (
-							<motion.div
-								key="cross"
-								initial={{ opacity: 0, rotate: 90, scale: 0.5 }}
-								animate={{ opacity: 1, rotate: 0, scale: 1 }}
-								exit={{ opacity: 0, rotate: -90, scale: 0.5 }}
-								transition={{ duration: 0.3 }}
-							>
-								<RxCross2
-									className="text-2xl text-tertiary cursor-pointer z-50 relative hover:text-text transition-all duration-200 ease-in-out"
-									onClick={() => setIsOpen((prev) => !prev)}
-								/>
-							</motion.div>
-						)}
-					</AnimatePresence>
-					{/* Mobile Menu */}
-					{isOpen && (
+
+			{/* Mobile Hamburger Menu */}
+			<div className="md:hidden">
+				<AnimatePresence mode="wait">
+					{!isOpen ? (
 						<motion.div
-							variants={listContainerVariants}
-							animate="opened"
-							initial="closed"
-							exit="closed"
-							className={`absolute top-0 left-0 w-screen h-screen backdrop-blur-md flex flex-col items-center justify-center bg-black/30 z-10 gap-4 p-4 sm:p-8 lg:p-12 xl:p-16 text-3xl`}
+							key="hamburger"
+							initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+							animate={{ opacity: 1, rotate: 0, scale: 1 }}
+							exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
+							transition={{ duration: 0.3 }}
 						>
-							{links.map((link) => (
-								<motion.div key={link.name} variants={listItemsVariants}>
-									<Link
-										href={link.href}
-										className="mx-2 text-lg hover:underline transition-all delay-100 text-tertiary duration-200"
-									>
-										{link.name}
-									</Link>
-								</motion.div>
-							))}
+							<RxHamburgerMenu
+								className="text-2xl text-text cursor-pointer z-50 relative hover:text-secondary transition-all duration-200 ease-in-out"
+								onClick={() => setIsOpen((prev) => !prev)}
+							/>
+						</motion.div>
+					) : (
+						<motion.div
+							key="cross"
+							initial={{ opacity: 0, rotate: 90, scale: 0.5 }}
+							animate={{ opacity: 1, rotate: 0, scale: 1 }}
+							exit={{ opacity: 0, rotate: -90, scale: 0.5 }}
+							transition={{ duration: 0.3 }}
+						>
+							<RxCross2
+								className="text-2xl text-secondary cursor-pointer z-50 relative hover:text-text transition-all duration-200 ease-in-out"
+								onClick={() => setIsOpen((prev) => !prev)}
+							/>
 						</motion.div>
 					)}
-				</div>
-			}
+				</AnimatePresence>
+
+				{/* Mobile Nav Links */}
+				{isOpen && (
+					<motion.div
+						variants={listContainerVariants}
+						animate="opened"
+						initial="closed"
+						exit="closed"
+						className="absolute top-0 left-0 w-screen h-screen backdrop-blur-md bg-black/30 z-10 flex flex-col items-center justify-center gap-4 p-4 sm:p-8 lg:p-12 xl:p-16 text-3xl"
+					>
+						{links.map((link) => (
+							<motion.div key={link.name} variants={listItemsVariants}>
+								<Link
+									href={link.href}
+									className="mx-2 text-lg text-secondary hover:text-accent hover:underline transition-all delay-100 duration-200"
+								>
+									{link.name}
+								</Link>
+							</motion.div>
+						))}
+					</motion.div>
+				)}
+			</div>
 		</nav>
 	);
 }
