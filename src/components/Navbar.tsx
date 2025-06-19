@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { greatVibes } from "@/_lib/font";
+import { parisienne } from "@/_lib/font";
 import Link from "next/link";
 import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
@@ -80,7 +80,7 @@ export default function Navbar() {
 				<Link
 					href="/"
 					aria-label="Go to homepage"
-					className={`${greatVibes.className} text-2xl transition-all duration-150 ease-in-out text-shadow-sm hover:text-secondary`}
+					className={`${parisienne.className} text-2xl transition-all duration-150 ease-in-out text-shadow-sm hover:text-secondary`}
 				>
 					<span className="font-medium">Uday</span>
 					<span className="px-2 py-0.5 rounded-md font-medium">Mishra</span>

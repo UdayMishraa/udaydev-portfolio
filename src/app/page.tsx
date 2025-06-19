@@ -1,6 +1,6 @@
 "use client";
 
-import { urbanist } from "@/_lib/font";
+import { cormorant } from "@/_lib/font";
 import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -61,7 +61,7 @@ export default function Home() {
 				>
 					<motion.h1
 						variants={fadeUp}
-						className={`text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight ${urbanist.className} text-text`}
+						className={`text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight ${cormorant.className} text-text`}
 					>
 						Designing <span className="text-secondary">Intuitive</span> &{" "}
 						<span className="text-secondary">Impactful</span> Interfaces

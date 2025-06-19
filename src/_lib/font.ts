@@ -1,16 +1,16 @@
-import { Urbanist, Jost, Great_Vibes } from "next/font/google";
+import { Cormorant_Garamond, Urbanist, Parisienne } from "next/font/google";
+
+export const cormorant = Cormorant_Garamond({
+	subsets: ["latin"],
+	weight: ["400", "500", "600", "700"],
+});
 
 export const urbanist = Urbanist({
 	subsets: ["latin"],
-	weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+	weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-export const jost = Jost({
-	subsets: ["latin"],
-	weight: ["400", "700"],
-});
-
-export const greatVibes = Great_Vibes({
+export const parisienne = Parisienne({
 	subsets: ["latin"],
 	weight: "400",
 });

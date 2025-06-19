@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./Navbar";
-import { jost } from "@/_lib/font";
+import { urbanist } from "@/_lib/font";
 
 export default function TransitionProvider({
 	children,
@@ -56,7 +56,7 @@ export default function TransitionProvider({
 				{/* Pathname text */}
 			</AnimatePresence>
 
-			<header className={`h-24 flex items-center ${jost.className}`}>
+			<header className={`h-24 flex items-center ${urbanist.className}`}>
 				<Navbar />
 			</header>
 

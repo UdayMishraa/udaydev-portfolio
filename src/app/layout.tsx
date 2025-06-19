@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 import "./globals.css";
-import { urbanist } from "@/_lib/font";
+import { cormorant } from "@/_lib/font";
 import TransitionProvider from "@/components/TransitionProvider";
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ export default function RootLayout({
 		<html lang="en" className="scroll-smooth">
 			<body
 				className={`
-		${urbanist.className} 
+		${cormorant.className} 
 		bg-gradient-to-br from-secondary/30 to-primary/25 
 		text-text antialiased 
 		min-h-screen flex flex-col 
