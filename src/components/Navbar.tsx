@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { parisienne } from "@/_lib/font";
 import Link from "next/link";
@@ -51,6 +51,7 @@ const listItemsVariants = {
 };
 
 export default function Navbar() {
+	const sidebarRef = useRef<HTMLDivElement>(null);
 	const [isOpen, setIsOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
 	useEffect(() => {
@@ -58,6 +59,23 @@ export default function Navbar() {
 		window.addEventListener("scroll", handleScroll);
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
+
+	useEffect(() => {
+		const handleOutsideClick = (event: MouseEvent) => {
+			if (
+				sidebarRef.current &&
+				!sidebarRef.current.contains(event.target as Node)
+			) {
+				setIsOpen(false);
+			}
+		};
+
+		document.addEventListener("mousedown", handleOutsideClick);
+
+		return () => {
+			document.removeEventListener("mousedown", handleOutsideClick);
+		};
+	}, [isOpen]);
 
 	return (
 		<nav
@@ -104,7 +122,7 @@ export default function Navbar() {
 			</div>
 
 			{/* Mobile Hamburger Menu */}
-			<div className="md:hidden">
+			<div className="md:hidden flex flex-col items-center justify-end">
 				<AnimatePresence mode="wait">
 					{!isOpen ? (
 						<motion.div
@@ -128,8 +146,8 @@ export default function Navbar() {
 							transition={{ duration: 0.3 }}
 						>
 							<RxCross2
-								className="text-2xl text-secondary cursor-pointer z-50 relative hover:text-text transition-all duration-200 ease-in-out"
-								onClick={() => setIsOpen((prev) => !prev)}
+								className="text-2xl hover:text-secondary cursor-pointer z-50 relative text-text transition-all duration-200 ease-in-out"
+								onClick={() => setIsOpen(false)}
 							/>
 						</motion.div>
 					)}
@@ -138,17 +156,20 @@ export default function Navbar() {
 				{/* Mobile Nav Links */}
 				{isOpen && (
 					<motion.div
+						ref={sidebarRef}
 						variants={listContainerVariants}
 						animate="opened"
 						initial="closed"
 						exit="closed"
-						className="absolute top-0 left-0 w-screen h-screen backdrop-blur-md bg-black/30 z-10 flex flex-col items-center justify-center gap-4 p-4 sm:p-8 lg:p-12 xl:p-16 text-3xl"
+						className="absolute top-0 right-0 h-screen w-[65vw] bg-gradient-to-br from-secondary/60 to-primary/50 z-40 rounded-l-3xl shadow-xl flex flex-col items-center justify-center gap-10 px-6 py-10 text-text transition-all duration-300 ease-in-out"
+						style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)" }}
 					>
 						{links.map((link) => (
 							<motion.div key={link.name} variants={listItemsVariants}>
 								<Link
 									href={link.href}
-									className="mx-2 text-lg text-secondary hover:text-accent hover:underline transition-all delay-100 duration-200"
+									className="text-xl font-semibold text-text hover:text-accent transition-all duration-200 underline-offset-4 hover:underline"
+									onClick={() => setIsOpen(false)}
 								>
 									{link.name}
 								</Link>
